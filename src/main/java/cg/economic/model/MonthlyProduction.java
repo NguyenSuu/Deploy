@@ -10,6 +10,7 @@ import java.util.Set;
 public class MonthlyProduction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "bigserial")
     private Long id;
     private int month;
     private int year;

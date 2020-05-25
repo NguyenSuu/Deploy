@@ -8,6 +8,7 @@ import java.util.Set;
 public class QuarterProduction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "bigserial")
     private Long id;
     private int quarter;
     private int year;

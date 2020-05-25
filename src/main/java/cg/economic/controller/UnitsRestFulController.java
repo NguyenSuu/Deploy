@@ -16,36 +16,38 @@ public class UnitsRestFulController {
     private UnitsService unitsService;
 
     @GetMapping(value = "/units")
-    public List<Units> unitsList(){
+    public List<Units> unitsList() {
         return unitsService.findAll();
     }
 
 
     @GetMapping("/units/{id}")
-    public Units units(@PathVariable long id){
+    public Units units(@PathVariable long id) {
         return unitsService.findById(id);
     }
 
-    @PostMapping("/units")
-    public Units addUnits(@RequestBody Units units){
-        unitsService.save(units);
+    @RequestMapping(value = "/units",method = RequestMethod.POST)
+    public Units[] addUnits(@RequestBody Units[] units) {
+        for (var unit : units) {
+            unitsService.save(unit);
+        }
         return units;
     }
 
     @PatchMapping("/units")
-    public Units patchUnits(@RequestBody Units units){
+    public Units patchUnits(@RequestBody Units units) {
         unitsService.save(units);
         return units;
     }
 
     @DeleteMapping("/units/{id}")
-    public void deleteUnits(@PathVariable long id){
+    public void deleteUnits(@PathVariable long id) {
         unitsService.remove(id);
     }
 
 
     @DeleteMapping("/units-remove/{id}")
-    public ResponseEntity<Units> deleteHttpStatusUnits(@PathVariable long id){
+    public ResponseEntity<Units> deleteHttpStatusUnits(@PathVariable long id) {
         unitsService.remove(id);
         return new ResponseEntity<Units>(HttpStatus.OK);
     }

@@ -27,8 +27,10 @@ public class TypeDataRestFulController {
     }
 
     @PostMapping("/type-data")
-    public TypeData addTypeData(@RequestBody TypeData typeData){
-        typeDataService.save(typeData);
+    public TypeData[] addTypeData(@RequestBody TypeData[] typeData){
+        for(var type :typeData) {
+            typeDataService.save(type);
+        }
         return typeData;
     }
 

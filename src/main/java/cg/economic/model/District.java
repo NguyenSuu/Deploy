@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "bigserial")
     private Long id;
     private String code;
     private String name;

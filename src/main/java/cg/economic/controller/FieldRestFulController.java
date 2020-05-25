@@ -27,9 +27,11 @@ public class FieldRestFulController {
     }
 
     @PostMapping("/fields")
-    public Field addField(@RequestBody Field field){
-        fieldService.save(field);
-        return field;
+    public Field[] addField(@RequestBody Field[] fields){
+        for(var field:fields) {
+            fieldService.save(field);
+        }
+        return fields;
     }
 
     @PatchMapping("/fields")
@@ -50,3 +52,4 @@ public class FieldRestFulController {
         return new ResponseEntity<Field>(HttpStatus.OK);
     }
 }
+
