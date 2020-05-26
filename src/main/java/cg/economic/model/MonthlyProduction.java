@@ -16,6 +16,7 @@ public class MonthlyProduction {
     private int year;
     private String data;
     private Long p_id;
+    private Long t_d_id;
 
     public MonthlyProduction(){
 
@@ -32,17 +33,17 @@ public class MonthlyProduction {
         this.products = products;
     }
 
-    @JsonIgnore
-    @OneToMany
-    @JoinColumn(name="monthlyProduction_id")
-    //@OneToMany(targetEntity = TypeData.class)
-    private Set<TypeData> typeData;
 
-    public Set<TypeData> getTypeData() {
+    @ManyToOne
+    @JoinColumn(name="typeData_id")
+    //@OneToMany(targetEntity = TypeData.class)
+    private TypeData typeData;
+
+    public TypeData getTypeData() {
         return typeData;
     }
 
-    public void setTypeData(Set<TypeData> typeData) {
+    public void setTypeData(TypeData typeData) {
         this.typeData = typeData;
     }
 
@@ -100,5 +101,11 @@ public class MonthlyProduction {
         this.data = data;
     }
 
+    public Long getT_d_id() {
+        return t_d_id;
+    }
 
+    public void setT_d_id(Long t_d_id) {
+        this.t_d_id = t_d_id;
+    }
 }

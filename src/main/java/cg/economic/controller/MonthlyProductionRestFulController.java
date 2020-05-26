@@ -4,6 +4,7 @@ import cg.economic.model.MonthlyProduction;
 import cg.economic.model.Product;
 import cg.economic.service.impl.MonthlyProductionService;
 import cg.economic.service.impl.ProductService;
+import cg.economic.service.impl.TypeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class MonthlyProductionRestFulController {
     private MonthlyProductionService monthlyProductionService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private TypeDataService typeDataService;
+
     @GetMapping("/monthly-production")
     public List<MonthlyProduction> monthlyProductionList(){
         return monthlyProductionService.findAll();
@@ -34,6 +38,7 @@ public class MonthlyProductionRestFulController {
         for(var mProduction:monthlyProduction){
             Product product=productService.findById(mProduction.getP_id());
             mProduction.setProducts(product);
+            mProduction.setTypeData(typeDataService.findById(mProduction.getT_d_id()));
             monthlyProductionService.save(mProduction);
         }
         return monthlyProduction;

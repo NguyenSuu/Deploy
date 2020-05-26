@@ -1,6 +1,9 @@
 package cg.economic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "type_data")
@@ -14,18 +17,17 @@ public class TypeData {
     public TypeData(){
 
     }
-    @ManyToOne
-    @JoinColumn(name = "monthlyProduction_id")
-    private MonthlyProduction monthlyProductions;
+    @JsonIgnore
+    @OneToMany
+    private Set<MonthlyProduction> monthlyProductions;
 
-    public MonthlyProduction getMonthlyProductions() {
+    public Set<MonthlyProduction> getMonthlyProductions() {
         return monthlyProductions;
     }
 
-    public void setMonthlyProductions(MonthlyProduction monthlyProductions) {
+    public void setMonthlyProductions(Set<MonthlyProduction> monthlyProductions) {
         this.monthlyProductions = monthlyProductions;
     }
-
 
     public Long getId() {
         return id;
