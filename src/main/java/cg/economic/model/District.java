@@ -1,6 +1,9 @@
 package cg.economic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "district")
@@ -11,6 +14,18 @@ public class District {
     private Long id;
     private String code;
     private String name;
+
+    @JsonIgnore
+    @OneToMany
+    private Set<MonthlyProduction> monthlyProduction;
+
+    public Set<MonthlyProduction> getMonthlyProduction() {
+        return monthlyProduction;
+    }
+
+    public void setMonthlyProduction(Set<MonthlyProduction> monthlyProduction) {
+        this.monthlyProduction = monthlyProduction;
+    }
 
     public Long getId() {
         return id;

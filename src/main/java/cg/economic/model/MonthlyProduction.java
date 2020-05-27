@@ -17,6 +17,7 @@ public class MonthlyProduction {
     private String data;
     private Long p_id;
     private Long t_d_id;
+    private Long d_id;
 
     public MonthlyProduction(){
 
@@ -33,6 +34,17 @@ public class MonthlyProduction {
         this.products = products;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "district")
+    private District district;
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
 
     @ManyToOne
     @JoinColumn(name="typeData_id")
@@ -105,5 +117,13 @@ public class MonthlyProduction {
 
     public void setT_d_id(Long t_d_id) {
         this.t_d_id = t_d_id;
+    }
+
+    public Long getD_id() {
+        return d_id;
+    }
+
+    public void setD_id(Long d_id) {
+        this.d_id = d_id;
     }
 }

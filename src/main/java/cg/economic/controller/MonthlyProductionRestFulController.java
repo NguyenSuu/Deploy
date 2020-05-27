@@ -2,6 +2,7 @@ package cg.economic.controller;
 
 import cg.economic.model.MonthlyProduction;
 import cg.economic.model.Product;
+import cg.economic.service.impl.DistrictService;
 import cg.economic.service.impl.MonthlyProductionService;
 import cg.economic.service.impl.ProductService;
 import cg.economic.service.impl.TypeDataService;
@@ -21,6 +22,8 @@ public class MonthlyProductionRestFulController {
     private ProductService productService;
     @Autowired
     private TypeDataService typeDataService;
+    @Autowired
+    private DistrictService districtService;
 
     @GetMapping("/monthly-production")
     public List<MonthlyProduction> monthlyProductionList(){
@@ -38,6 +41,7 @@ public class MonthlyProductionRestFulController {
         for(var mProduction:monthlyProduction){
             mProduction.setProducts(productService.findById(mProduction.getP_id()));
             mProduction.setTypeData(typeDataService.findById(mProduction.getT_d_id()));
+            mProduction.setDistrict(districtService.findById(mProduction.getD_id()));
             monthlyProductionService.save(mProduction);
         }
         return monthlyProduction;
