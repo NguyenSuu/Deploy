@@ -58,17 +58,17 @@ public class MonthlyProduction {
         this.typeData = typeData;
     }
 
-    @JsonIgnore
-    @ManyToOne
-    private QuarterProduction quarterProduction;
-
-    public QuarterProduction getQuarterProduction() {
-        return quarterProduction;
-    }
-
-    public void setQuarterProduction(QuarterProduction quarterProduction) {
-        this.quarterProduction = quarterProduction;
-    }
+//    @JsonIgnore
+//    @ManyToOne
+//    private QuarterProduction quarterProduction;
+//
+//    public QuarterProduction getQuarterProduction() {
+//        return quarterProduction;
+//    }
+//
+//    public void setQuarterProduction(QuarterProduction quarterProduction) {
+//        this.quarterProduction = quarterProduction;
+//    }
 
 
     public Long getP_id() {

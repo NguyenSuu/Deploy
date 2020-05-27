@@ -16,16 +16,16 @@ public class QuarterProduction {
 
     }
 
-    @OneToMany(mappedBy = "quarterProduction",fetch = FetchType.EAGER)
-    private Set<MonthlyProduction> monthlyProductions;
-
-    public Set<MonthlyProduction> getMonthlyProductions() {
-        return monthlyProductions;
-    }
-
-    public void setMonthlyProductions(Set<MonthlyProduction> monthlyProductions) {
-        this.monthlyProductions = monthlyProductions;
-    }
+//    @OneToMany(mappedBy = "quarterProduction",fetch = FetchType.EAGER)
+//    private Set<MonthlyProduction> monthlyProductions;
+//
+//    public Set<MonthlyProduction> getMonthlyProductions() {
+//        return monthlyProductions;
+//    }
+//
+//    public void setMonthlyProductions(Set<MonthlyProduction> monthlyProductions) {
+//        this.monthlyProductions = monthlyProductions;
+//    }
 
     public Long getId() {
         return id;
