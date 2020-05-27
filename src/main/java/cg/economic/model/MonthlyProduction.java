@@ -36,7 +36,6 @@ public class MonthlyProduction {
 
     @ManyToOne
     @JoinColumn(name="typeData_id")
-    //@OneToMany(targetEntity = TypeData.class)
     private TypeData typeData;
 
     public TypeData getTypeData() {
@@ -49,7 +48,6 @@ public class MonthlyProduction {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "quarter_production_id")
     private QuarterProduction quarterProduction;
 
     public QuarterProduction getQuarterProduction() {

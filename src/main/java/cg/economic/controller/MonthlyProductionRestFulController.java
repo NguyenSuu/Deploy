@@ -36,8 +36,7 @@ public class MonthlyProductionRestFulController {
     @PostMapping("/monthly-production")
     public MonthlyProduction[] addMonthlyProduction(@RequestBody MonthlyProduction[] monthlyProduction){
         for(var mProduction:monthlyProduction){
-            Product product=productService.findById(mProduction.getP_id());
-            mProduction.setProducts(product);
+            mProduction.setProducts(productService.findById(mProduction.getP_id()));
             mProduction.setTypeData(typeDataService.findById(mProduction.getT_d_id()));
             monthlyProductionService.save(mProduction);
         }
