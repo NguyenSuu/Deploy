@@ -939,6 +939,106 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./src/app/@core/common/crud.interceptor.ts":
+  /*!**************************************************!*\
+    !*** ./src/app/@core/common/crud.interceptor.ts ***!
+    \**************************************************/
+
+  /*! exports provided: CrudIterceptor */
+
+  /***/
+  function srcAppCoreCommonCrudInterceptorTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CrudIterceptor", function () {
+      return CrudIterceptor;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "../../node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs */
+    "../../node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs/operators */
+    "../../node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../services/toast.service */
+    "./src/app/services/toast.service.ts");
+
+    var CrudIterceptor =
+    /*#__PURE__*/
+    function () {
+      function CrudIterceptor(toastService) {
+        _classCallCheck(this, CrudIterceptor);
+
+        this.toastService = toastService;
+      }
+
+      _createClass(CrudIterceptor, [{
+        key: "intercept",
+        value: function intercept(req, next) {
+          var _this2 = this;
+
+          return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            console.log(res.status);
+            console.log();
+
+            if (res.status == 201) {
+              // Alert notification
+              _this2.toastService.success();
+            } else if (res.status == 202) {
+              _this2.toastService.edit();
+            }
+
+            return res;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (err) {
+            if (err.status == 400) {
+              // Alert notification
+              console.log('yeu cau khong hop le');
+            }
+
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(err);
+          }));
+        }
+      }]);
+
+      return CrudIterceptor;
+    }();
+
+    CrudIterceptor.ctorParameters = function () {
+      return [{
+        type: _services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
+      }];
+    };
+
+    CrudIterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])()], CrudIterceptor);
+    /***/
+  },
+
+  /***/
   "./src/app/@core/components/nav/nav.component.scss":
   /*!*********************************************************!*\
     !*** ./src/app/@core/components/nav/nav.component.scss ***!
@@ -1502,22 +1602,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "signIn",
         value: function signIn(credentials) {
-          var _this2 = this;
+          var _this3 = this;
 
           return this.httpClient.post(signInEndPoint, credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (_ref) {
             var token = _ref.token;
 
-            _this2.tokenSubject.next(token);
+            _this3.tokenSubject.next(token);
 
-            _this2.cookieService.set(AUTH_TOKEN, token, 1800, '/'); // Store JWT Token Into Cookie
-
-
-            var payload = _this2.getAuthDetailFromToken(token);
-
-            _this2.cookieService.set(AUTH_DETAIL, JSON.stringify(payload), 1800, '/'); // Store Auth Detail Into Cookie
+            _this3.cookieService.set(AUTH_TOKEN, token, 1800, '/'); // Store JWT Token Into Cookie
 
 
-            _this2.authDetailSubject.next(payload);
+            var payload = _this3.getAuthDetailFromToken(token);
+
+            _this3.cookieService.set(AUTH_DETAIL, JSON.stringify(payload), 1800, '/'); // Store Auth Detail Into Cookie
+
+
+            _this3.authDetailSubject.next(payload);
           }));
         }
       }, {
@@ -1530,18 +1630,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "canActivate",
         value: function canActivate() {
-          var _this3 = this;
+          var _this4 = this;
 
           return this.token$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (token) {
             var hasPermission = !!token;
-            console.log(_this3.tokenFromCookie);
+            console.log(_this4.tokenFromCookie);
             console.log('token checked', token);
 
             if (hasPermission) {
               return true;
             }
 
-            _this3.goToSignInPage();
+            _this4.goToSignInPage();
 
             return false;
           }));
@@ -1653,6 +1753,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       component: _core_layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_3__["AdminLayoutComponent"],
       canActivate: [_core_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]],
       children: [{
+        path: '',
+        redirectTo: 'monthly-production',
+        pathMatch: 'full'
+      }, {
         path: 'monthly-production',
         loadChildren: function loadChildren() {
           return Promise.all(
@@ -1721,9 +1825,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         path: 'district',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | modules-quan-huyen-quan-huyen-module */
-          "modules-quan-huyen-quan-huyen-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("modules-quan-huyen-quan-huyen-module")]).then(__webpack_require__.bind(null,
           /*! ./modules/quan-huyen/quan-huyen.module */
           "./src/app/modules/quan-huyen/quan-huyen.module.ts")).then(function (m) {
             return m.QuanHuyenModule;
@@ -1916,6 +2020,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _core_common_api_interceptor__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ./@core/common/api.interceptor */
     "./src/app/@core/common/api.interceptor.ts");
+    /* harmony import */
+
+
+    var ngx_toastr__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ngx-toastr */
+    "../../node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+    /* harmony import */
+
+
+    var _core_common_crud_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! ./@core/common/crud.interceptor */
+    "./src/app/@core/common/crud.interceptor.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1923,7 +2039,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_6__["CoreModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_6__["CoreModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_14__["ToastrModule"].forRoot()],
       providers: [_core_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"],
         useClass: _core_common_auth_interceptor__WEBPACK_IMPORTED_MODULE_10__["AuthInterceptor"],
@@ -1936,9 +2052,89 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"],
         useClass: _core_common_api_interceptor__WEBPACK_IMPORTED_MODULE_13__["ApiInterceptor"],
         multi: true
+      }, {
+        provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"],
+        useClass: _core_common_crud_interceptor__WEBPACK_IMPORTED_MODULE_15__["CrudIterceptor"],
+        multi: true
       }],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/toast.service.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/services/toast.service.ts ***!
+    \*******************************************/
+
+  /*! exports provided: ToastService */
+
+  /***/
+  function srcAppServicesToastServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ToastService", function () {
+      return ToastService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "../../node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var ngx_toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ngx-toastr */
+    "../../node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+
+    var ToastService =
+    /*#__PURE__*/
+    function () {
+      function ToastService(toastr) {
+        _classCallCheck(this, ToastService);
+
+        this.toastr = toastr;
+      }
+
+      _createClass(ToastService, [{
+        key: "success",
+        value: function success() {
+          this.toastr.success('Thành công', 'Thêm mới', {
+            timeOut: 5000
+          });
+        }
+      }, {
+        key: "edit",
+        value: function edit() {
+          this.toastr.success('Thành công', 'Edit');
+        }
+      }]);
+
+      return ToastService;
+    }();
+
+    ToastService.ctorParameters = function () {
+      return [{
+        type: ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"]
+      }];
+    };
+
+    ToastService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], ToastService);
     /***/
   },
 
@@ -1973,9 +2169,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var environment = {
       production: false,
-      // host: 'https://economic-statistic.herokuapp.com/'
-      // host:'http://localhost:8080/'
-      host: '/'
+      host: 'https://economic-statistic.herokuapp.com/' // host:'http://localhost:8080/'
+      // host:'/'
+
     };
     /*
      * For easier debugging in development mode, you can import the following file

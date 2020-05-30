@@ -402,8 +402,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addMore",
         value: function addMore() {
           this.districtsControl.push(this.formBuilder.group({
-            name: [''],
-            code: ['']
+            name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            code: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
           }));
         }
       }, {
@@ -726,19 +726,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! ./services/quan-huyen.service */
-    "./src/app/modules/quan-huyen/services/quan-huyen.service.ts");
-    /* harmony import */
-
-
-    var _district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./district-dialog/district-dialog.component */
     "./src/app/modules/quan-huyen/district-dialog/district-dialog.component.ts");
     /* harmony import */
 
 
-    var _lib_lib_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _lib_lib_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ../../@lib/lib.module */
     "./src/app/@lib/lib.module.ts");
 
@@ -752,144 +746,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     QuanHuyenModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_quan_huyen_component__WEBPACK_IMPORTED_MODULE_3__["QuanHuyenComponent"], _district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_10__["DistrictDialogComponent"]],
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES), _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTabsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"], _lib_lib_module__WEBPACK_IMPORTED_MODULE_11__["LibModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"]],
-      providers: [_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_9__["QuanHuyenService"]],
-      entryComponents: [_district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_10__["DistrictDialogComponent"]]
+      declarations: [_quan_huyen_component__WEBPACK_IMPORTED_MODULE_3__["QuanHuyenComponent"], _district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_9__["DistrictDialogComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES), _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTabsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"], _lib_lib_module__WEBPACK_IMPORTED_MODULE_10__["LibModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"]],
+      entryComponents: [_district_dialog_district_dialog_component__WEBPACK_IMPORTED_MODULE_9__["DistrictDialogComponent"]]
     })], QuanHuyenModule);
-    /***/
-  },
-
-  /***/
-  "./src/app/modules/quan-huyen/services/quan-huyen.service.ts":
-  /*!*******************************************************************!*\
-    !*** ./src/app/modules/quan-huyen/services/quan-huyen.service.ts ***!
-    \*******************************************************************/
-
-  /*! exports provided: QuanHuyenService */
-
-  /***/
-  function srcAppModulesQuanHuyenServicesQuanHuyenServiceTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "QuanHuyenService", function () {
-      return QuanHuyenService;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "../../node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/common/http */
-    "../../node_modules/@angular/common/fesm2015/http.js");
-    /* harmony import */
-
-
-    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! rxjs */
-    "../../node_modules/rxjs/_esm2015/index.js");
-    /* harmony import */
-
-
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! rxjs/operators */
-    "../../node_modules/rxjs/_esm2015/operators/index.js");
-
-    var QuanHuyenService =
-    /*#__PURE__*/
-    function () {
-      function QuanHuyenService(httpClient) {
-        _classCallCheck(this, QuanHuyenService);
-
-        this.httpClient = httpClient;
-        this.districtsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
-        this.getList();
-      }
-
-      _createClass(QuanHuyenService, [{
-        key: "getList",
-        value: function getList() {
-          var _this3 = this;
-
-          this.httpClient.get("districts").subscribe(function (res) {
-            return _this3.districtsSubject.next(res);
-          });
-        }
-      }, {
-        key: "add",
-        value: function add(districts) {
-          var _this4 = this;
-
-          this.httpClient.post("districts", districts).subscribe(function (res) {
-            var newList = [].concat(_toConsumableArray(res), _toConsumableArray(_this4.districtsSubject.value));
-
-            _this4.districtsSubject.next(newList);
-          });
-        }
-      }, {
-        key: "update",
-        value: function update(district) {
-          var _this5 = this;
-
-          return this.httpClient.patch("districts", district).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (r) {
-            var value = _this5.districtsSubject.value;
-            var index = value.findIndex(function (e) {
-              return e.id == district.id;
-            });
-
-            var newList = _toConsumableArray(value);
-
-            newList[index] = district;
-
-            _this5.districtsSubject.next(newList);
-          }));
-        }
-      }, {
-        key: "delete",
-        value: function _delete(id) {
-          var _this6 = this;
-
-          this.httpClient["delete"]("districts/" + id).subscribe(function (res) {
-            var value = _this6.districtsSubject.value;
-            var newList = value.filter(function (e) {
-              return e.id != id;
-            });
-
-            _this6.districtsSubject.next(newList);
-          });
-        }
-      }, {
-        key: "district$",
-        get: function get() {
-          return this.districtsSubject.asObservable();
-        }
-      }]);
-
-      return QuanHuyenService;
-    }();
-
-    QuanHuyenService.ctorParameters = function () {
-      return [{
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-      }];
-    };
-
-    QuanHuyenService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()], QuanHuyenService);
     /***/
   }
 }]);

@@ -383,7 +383,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "field$",
+        key: "fields$",
         get: function get() {
           return this.fieldsSubject.asObservable();
         }
@@ -514,7 +514,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             newList[index] = productL;
 
-            _this7.fieldSV.field$.subscribe(function (fieldList) {
+            _this7.fieldSV.fields$.subscribe(function (fieldList) {
               var fL = fieldList.find(function (e) {
                 return e.id == productL.f_id;
               });
@@ -677,7 +677,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               product.productLine = pL;
             });
 
-            _this11.unitsService.unit$.subscribe(function (uList) {
+            _this11.unitsService.units$.subscribe(function (uList) {
               var uL = uList.find(function (e) {
                 return e.id == product.u_id;
               });
@@ -702,7 +702,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "product$",
+        key: "products$",
         get: function get() {
           return this.productsSubject.asObservable();
         }
@@ -843,7 +843,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "unit$",
+        key: "units$",
         get: function get() {
           return this.unitsSubject.asObservable();
         }

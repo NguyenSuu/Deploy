@@ -451,6 +451,62 @@ CorsIntereptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/@core/common/crud.interceptor.ts":
+/*!**************************************************!*\
+  !*** ./src/app/@core/common/crud.interceptor.ts ***!
+  \**************************************************/
+/*! exports provided: CrudIterceptor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrudIterceptor", function() { return CrudIterceptor; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "../../node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "../../node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/toast.service */ "./src/app/services/toast.service.ts");
+
+
+
+
+
+let CrudIterceptor = class CrudIterceptor {
+    constructor(toastService) {
+        this.toastService = toastService;
+    }
+    intercept(req, next) {
+        return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            console.log(res.status);
+            console.log();
+            if (res.status == 201) {
+                // Alert notification
+                this.toastService.success();
+            }
+            else if (res.status == 202) {
+                this.toastService.edit();
+            }
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((err) => {
+            if (err.status == 400) {
+                // Alert notification
+                console.log('yeu cau khong hop le');
+            }
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(err);
+        }));
+    }
+};
+CrudIterceptor.ctorParameters = () => [
+    { type: _services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"] }
+];
+CrudIterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])()
+], CrudIterceptor);
+
+
+
+/***/ }),
+
 /***/ "./src/app/@core/components/nav/nav.component.scss":
 /*!*********************************************************!*\
   !*** ./src/app/@core/components/nav/nav.component.scss ***!
@@ -862,6 +918,11 @@ const routes = [
         canActivate: [_core_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]],
         children: [
             {
+                path: '',
+                redirectTo: 'monthly-production',
+                pathMatch: 'full'
+            },
+            {
                 path: 'monthly-production',
                 loadChildren: () => Promise.all(/*! import() | modules-monthly-production-monthly-production-module */[__webpack_require__.e("default~modules-monthly-production-monthly-production-module~modules-products-products-module"), __webpack_require__.e("common"), __webpack_require__.e("modules-monthly-production-monthly-production-module")]).then(__webpack_require__.bind(null, /*! ./modules/monthly-production/monthly-production.module */ "./src/app/modules/monthly-production/monthly-production.module.ts")).then(m => m.MonthlyProductionModule)
             },
@@ -887,7 +948,7 @@ const routes = [
             },
             {
                 path: 'district',
-                loadChildren: () => __webpack_require__.e(/*! import() | modules-quan-huyen-quan-huyen-module */ "modules-quan-huyen-quan-huyen-module").then(__webpack_require__.bind(null, /*! ./modules/quan-huyen/quan-huyen.module */ "./src/app/modules/quan-huyen/quan-huyen.module.ts")).then(m => m.QuanHuyenModule)
+                loadChildren: () => Promise.all(/*! import() | modules-quan-huyen-quan-huyen-module */[__webpack_require__.e("common"), __webpack_require__.e("modules-quan-huyen-quan-huyen-module")]).then(__webpack_require__.bind(null, /*! ./modules/quan-huyen/quan-huyen.module */ "./src/app/modules/quan-huyen/quan-huyen.module.ts")).then(m => m.QuanHuyenModule)
             },
         ]
     }
@@ -973,6 +1034,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_services_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./@core/services/auth.service */ "./src/app/@core/services/auth.service.ts");
 /* harmony import */ var _core_common_cors_interceptor__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./@core/common/cors.interceptor */ "./src/app/@core/common/cors.interceptor.ts");
 /* harmony import */ var _core_common_api_interceptor__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./@core/common/api.interceptor */ "./src/app/@core/common/api.interceptor.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-toastr */ "../../node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+/* harmony import */ var _core_common_crud_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./@core/common/crud.interceptor */ "./src/app/@core/common/crud.interceptor.ts");
+
+
 
 
 
@@ -1002,7 +1067,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"],
             _core_core_module__WEBPACK_IMPORTED_MODULE_6__["CoreModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
-            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"]
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_14__["ToastrModule"].forRoot()
         ],
         providers: [
             _core_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"],
@@ -1014,11 +1080,56 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             },
             {
                 provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _core_common_api_interceptor__WEBPACK_IMPORTED_MODULE_13__["ApiInterceptor"], multi: true
+            },
+            {
+                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _core_common_crud_interceptor__WEBPACK_IMPORTED_MODULE_15__["CrudIterceptor"], multi: true
             }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/toast.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/toast.service.ts ***!
+  \*******************************************/
+/*! exports provided: ToastService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastService", function() { return ToastService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-toastr */ "../../node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+
+
+
+let ToastService = class ToastService {
+    constructor(toastr) {
+        this.toastr = toastr;
+    }
+    success() {
+        this.toastr.success('Thành công', 'Thêm mới', {
+            timeOut: 5000,
+        });
+    }
+    edit() {
+        this.toastr.success('Thành công', 'Edit');
+    }
+};
+ToastService.ctorParameters = () => [
+    { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"] }
+];
+ToastService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ToastService);
 
 
 
@@ -1041,9 +1152,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    // host: 'https://economic-statistic.herokuapp.com/'
+    host: 'https://economic-statistic.herokuapp.com/'
     // host:'http://localhost:8080/'
-    host: '/'
+    // host:'/'
 };
 /*
  * For easier debugging in development mode, you can import the following file

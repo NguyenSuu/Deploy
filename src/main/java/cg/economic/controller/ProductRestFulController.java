@@ -34,21 +34,21 @@ public class ProductRestFulController {
     }
 
     @PostMapping("/products")
-    public Product[] addProduct(@RequestBody Product[] products) {
+    public ResponseEntity<Product> addProduct(@RequestBody Product[] products) {
         for (var product : products) {
             product.setProductLine(productLineService.findById(product.getpL_id()));
             product.setUnits(unitsService.findById(product.getU_id()));
             productService.save(product);
         }
-        return products;
+        return new ResponseEntity<Product>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/products")
-    public Product patchProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> patchProduct(@RequestBody Product product) {
         product.setUnits(unitsService.findById(product.getU_id()));
         product.setProductLine(productLineService.findById(product.getpL_id()));
         productService.save(product);
-        return product;
+        return new ResponseEntity<Product>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/products/{id}")

@@ -125215,7 +125215,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this387 = this;
 
-          this.fieldService.field$.subscribe(function (l) {
+          this.fieldService.fields$.subscribe(function (l) {
             return _this387.field = l;
           });
         }
@@ -125457,7 +125457,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "field$",
+        key: "fields$",
         get: function get() {
           return this.fieldsSubject.asObservable();
         }

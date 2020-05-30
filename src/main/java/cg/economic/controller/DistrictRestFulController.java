@@ -27,17 +27,17 @@ public class DistrictRestFulController {
     }
 
     @PostMapping("/districts")
-    public District[] addDistrict(@RequestBody District[] districts){
+    public ResponseEntity<District> addDistrict(@RequestBody District[] districts){
         for (var district :districts){
             districtService.save(district);
         }
-        return districts;
+        return new ResponseEntity<District>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/districts")
-    public District patchDistrict(@RequestBody District district){
+    public ResponseEntity<District> patchDistrict(@RequestBody District district){
         districtService.save(district);
-        return district;
+        return new ResponseEntity<District>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/districts/{id}")

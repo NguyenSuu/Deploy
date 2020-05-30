@@ -43,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 // We don't need CSRF for this example
@@ -50,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/authenticate","/register").permitAll()
                 .and().authorizeRequests().antMatchers("/ui","/**").permitAll()
+
                  .and().authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll().
 // all other requests need to be authenticated
        anyRequest().authenticated().

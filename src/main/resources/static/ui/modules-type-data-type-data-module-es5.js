@@ -394,8 +394,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addMore",
         value: function addMore() {
           this.TypeDataControl.push(this.formBuilder.group({
-            code: [''],
-            name: ['']
+            code: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
           }));
         }
       }, {
@@ -695,13 +695,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_type_data_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! ./services/type-data.service */
-    "./src/app/modules/type-data/services/type-data.service.ts");
-    /* harmony import */
-
-
-    var _dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./dialog-type-data/dialog-type-data.component */
     "./src/app/modules/type-data/dialog-type-data/dialog-type-data.component.ts");
 
@@ -716,10 +710,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     TypeDataModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_type_data_component__WEBPACK_IMPORTED_MODULE_3__["TypeDataComponent"], _dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_10__["DialogTypeDataComponent"]],
+      declarations: [_type_data_component__WEBPACK_IMPORTED_MODULE_3__["TypeDataComponent"], _dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_9__["DialogTypeDataComponent"]],
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES), _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTabsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__["LibModule"]],
-      providers: [_services_type_data_service__WEBPACK_IMPORTED_MODULE_9__["TypeDataService"]],
-      entryComponents: [_dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_10__["DialogTypeDataComponent"]]
+      entryComponents: [_dialog_type_data_dialog_type_data_component__WEBPACK_IMPORTED_MODULE_9__["DialogTypeDataComponent"]]
     })], TypeDataModule);
     /***/
   }

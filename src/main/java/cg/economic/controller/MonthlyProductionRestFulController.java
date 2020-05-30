@@ -37,20 +37,20 @@ public class MonthlyProductionRestFulController {
     }
 
     @PostMapping("/monthly-production")
-    public MonthlyProduction[] addMonthlyProduction(@RequestBody MonthlyProduction[] monthlyProduction){
+    public ResponseEntity<MonthlyProduction> addMonthlyProduction(@RequestBody MonthlyProduction[] monthlyProduction){
         for(var mProduction:monthlyProduction){
             mProduction.setProducts(productService.findById(mProduction.getP_id()));
             mProduction.setTypeData(typeDataService.findById(mProduction.getT_d_id()));
             mProduction.setDistrict(districtService.findById(mProduction.getD_id()));
             monthlyProductionService.save(mProduction);
         }
-        return monthlyProduction;
+        return new ResponseEntity<MonthlyProduction>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/monthly-production")
-    public MonthlyProduction patchMonthlyProduction(@RequestBody MonthlyProduction monthlyProduction){
+    public ResponseEntity<MonthlyProduction> patchMonthlyProduction(@RequestBody MonthlyProduction monthlyProduction){
         monthlyProductionService.save(monthlyProduction);
-        return monthlyProduction;
+        return new ResponseEntity<MonthlyProduction>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/monthly-production/{id}")

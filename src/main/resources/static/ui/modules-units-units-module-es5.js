@@ -414,9 +414,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addMore",
         value: function addMore() {
           this.UnitsControl.push(this.formBuider.group({
-            name: [''],
-            code: [''],
-            sign: ['']
+            name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            code: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            sign: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]]
           }));
         }
       }, {
@@ -573,7 +573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "unit$",
+        key: "units$",
         get: function get() {
           return this.unitsSubject.asObservable();
         }
@@ -704,7 +704,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this5 = this;
 
-          this.unitsSv.unit$.subscribe(function (l) {
+          this.unitsSv.units$.subscribe(function (l) {
             _this5.unit = l;
             var pageSize = _this5.pageSize;
 
@@ -857,19 +857,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_units_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-    /*! ./services/units.service */
-    "./src/app/modules/units/services/units.service.ts");
-    /* harmony import */
-
-
-    var _lib_lib_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ../../@lib/lib.module */
     "./src/app/@lib/lib.module.ts");
     /* harmony import */
 
 
-    var _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./dialog-unit/dialog-unit.component */
     "./src/app/modules/units/dialog-unit/dialog-unit.component.ts");
 
@@ -883,10 +877,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     UnitsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_units_component__WEBPACK_IMPORTED_MODULE_3__["UnitsComponent"], _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__["DialogUnitComponent"]],
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES), _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTabsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _lib_lib_module__WEBPACK_IMPORTED_MODULE_9__["LibModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatPaginatorModule"]],
-      providers: [_services_units_service__WEBPACK_IMPORTED_MODULE_8__["UnitsService"]],
-      entryComponents: [_dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__["DialogUnitComponent"]]
+      declarations: [_units_component__WEBPACK_IMPORTED_MODULE_3__["UnitsComponent"], _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__["DialogUnitComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES), _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTabsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__["LibModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatPaginatorModule"]],
+      entryComponents: [_dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__["DialogUnitComponent"]]
     })], UnitsModule);
     /***/
   }

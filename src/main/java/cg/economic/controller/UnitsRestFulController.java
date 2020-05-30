@@ -27,17 +27,17 @@ public class UnitsRestFulController {
     }
 
     @RequestMapping(value = "/units",method = RequestMethod.POST)
-    public Units[] addUnits(@RequestBody Units[] units) {
+    public ResponseEntity<Units> addUnits(@RequestBody Units[] units) {
         for (var unit : units) {
             unitsService.save(unit);
         }
-        return units;
+        return new ResponseEntity<Units>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/units")
-    public Units patchUnits(@RequestBody Units units) {
+    public ResponseEntity<Units> patchUnits(@RequestBody Units units) {
         unitsService.save(units);
-        return units;
+        return new ResponseEntity<Units>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/units/{id}")

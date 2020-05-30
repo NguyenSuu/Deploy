@@ -88998,7 +88998,7 @@ let FieldsComponent = class FieldsComponent {
         this.fieldService.delete(id);
     }
     ngOnInit() {
-        this.fieldService.field$.subscribe(l => this.field = l);
+        this.fieldService.fields$.subscribe(l => this.field = l);
     }
 };
 FieldsComponent.ctorParameters = () => [
@@ -89110,7 +89110,7 @@ let FieldsService = class FieldsService {
         this.fieldsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
         this.getList();
     }
-    get field$() {
+    get fields$() {
         return this.fieldsSubject.asObservable();
     }
     getList() {

@@ -233,9 +233,9 @@ let DialogUnitComponent = class DialogUnitComponent {
     }
     addMore() {
         this.UnitsControl.push(this.formBuider.group({
-            name: [''],
-            code: [''],
-            sign: ['']
+            name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            code: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            sign: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]]
         }));
     }
 };
@@ -284,7 +284,7 @@ let UnitsService = class UnitsService {
         this.unitsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         this.getList();
     }
-    get unit$() {
+    get units$() {
         return this.unitsSubject.asObservable();
     }
     getList() {
@@ -384,7 +384,7 @@ let UnitsComponent = class UnitsComponent {
         });
     }
     ngOnInit() {
-        this.unitsSv.unit$.subscribe(l => {
+        this.unitsSv.units$.subscribe(l => {
             this.unit = l;
             const { pageSize, } = this;
             this.onChangePage({
@@ -455,10 +455,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "../../node_modules/@angular/material/esm2015/material.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/flex-layout */ "../../node_modules/@angular/flex-layout/esm2015/flex-layout.js");
-/* harmony import */ var _services_units_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/units.service */ "./src/app/modules/units/services/units.service.ts");
-/* harmony import */ var _lib_lib_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../@lib/lib.module */ "./src/app/@lib/lib.module.ts");
-/* harmony import */ var _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialog-unit/dialog-unit.component */ "./src/app/modules/units/dialog-unit/dialog-unit.component.ts");
-
+/* harmony import */ var _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../@lib/lib.module */ "./src/app/@lib/lib.module.ts");
+/* harmony import */ var _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialog-unit/dialog-unit.component */ "./src/app/modules/units/dialog-unit/dialog-unit.component.ts");
 
 
 
@@ -479,7 +477,7 @@ let UnitsModule = class UnitsModule {
 };
 UnitsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_units_component__WEBPACK_IMPORTED_MODULE_3__["UnitsComponent"], _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__["DialogUnitComponent"]],
+        declarations: [_units_component__WEBPACK_IMPORTED_MODULE_3__["UnitsComponent"], _dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__["DialogUnitComponent"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES),
@@ -492,12 +490,11 @@ UnitsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"],
             _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
-            _lib_lib_module__WEBPACK_IMPORTED_MODULE_9__["LibModule"],
+            _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__["LibModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatPaginatorModule"]
         ],
-        providers: [_services_units_service__WEBPACK_IMPORTED_MODULE_8__["UnitsService"]],
-        entryComponents: [_dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_10__["DialogUnitComponent"]]
+        entryComponents: [_dialog_unit_dialog_unit_component__WEBPACK_IMPORTED_MODULE_9__["DialogUnitComponent"]]
     })
 ], UnitsModule);
 

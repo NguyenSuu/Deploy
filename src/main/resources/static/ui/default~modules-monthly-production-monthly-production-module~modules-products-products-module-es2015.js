@@ -174,7 +174,7 @@ let FieldsService = class FieldsService {
         this.fieldsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
         this.getList();
     }
-    get field$() {
+    get fields$() {
         return this.fieldsSubject.asObservable();
     }
     getList() {
@@ -272,7 +272,7 @@ let ProductLineService = class ProductLineService {
             const index = value.findIndex(e => e.id == productL.id);
             let newList = [...value];
             newList[index] = productL;
-            this.fieldSV.field$.subscribe(fieldList => {
+            this.fieldSV.fields$.subscribe(fieldList => {
                 const fL = fieldList.find(e => e.id == productL.f_id);
                 productL.field = fL;
             });
@@ -329,7 +329,7 @@ let ProductService = class ProductService {
         this.productsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         this.getList();
     }
-    get product$() {
+    get products$() {
         return this.productsSubject.asObservable();
     }
     getList() {
@@ -354,7 +354,7 @@ let ProductService = class ProductService {
                 const pL = pList.find(e => e.id == product.pL_id);
                 product.productLine = pL;
             });
-            this.unitsService.unit$.subscribe(uList => {
+            this.unitsService.units$.subscribe(uList => {
                 const uL = uList.find(e => e.id == product.u_id);
                 product.units = uL;
             });
@@ -410,7 +410,7 @@ let UnitsService = class UnitsService {
         this.unitsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         this.getList();
     }
-    get unit$() {
+    get units$() {
         return this.unitsSubject.asObservable();
     }
     getList() {

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("    <h1 mat-dialog-title>Số liệu sản xuất theo tháng</h1>\r\n    <div mat-dialog-content>\r\n        <div class=\"content\" fxLayout=\"row\" fxLayout.xs=\"column\" fxFlexFill>\r\n            <div fxFlex=\"50\" fxFlex.xs=\"50\">\r\n                <mat-form-field>\r\n                    <mat-label>Năm</mat-label>\r\n                    <input matInput [(ngModel)]=\"year\" [ngModelOptions]=\"{standalone: true}\">\r\n                </mat-form-field>\r\n            </div>\r\n            <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n            <div fxFlex=\"40\" fxFlex.xs=\"40\">\r\n                <mat-form-field>\r\n                    <mat-label>Tháng</mat-label>\r\n                    <mat-select  [(ngModel)]=\"month_value\" [ngModelOptions]=\"{standalone: true}\">\r\n                        <mat-option *ngFor=\"let m of month\" [value]=\"m\">\r\n                            {{m}}\r\n                        </mat-option>\r\n                    </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div mat-dialog-content>\r\n        <div [formGroup]=\"form\">\r\n            <div formArrayName=\"mProduction\" *ngFor=\"let control of mProductionControl.controls;index as i\">\r\n                <form class=\"example-form\" [formGroupName]=\"i\">\r\n                    <div class=\"content\" fxLayout=\"row\" fxLayout.xs=\"column\" fxFlexFill>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field>\r\n                                <mat-label> Tên sản phẩm</mat-label>\r\n                                <mat-select formControlName=\"p_id\">\r\n                                    <mat-option *ngFor=\"let p of mPSV.products$ | async\" [value]=\"p.id\">\r\n                                        {{p.name}}\r\n                                    </mat-option>\r\n                                </mat-select>\r\n                            </mat-form-field>\r\n                        </div>\r\n                        <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field >\r\n                                <mat-label>Kiểu dữ liệu</mat-label>\r\n                                <mat-select formControlName=\"t_d_id\">\r\n                                    <mat-option *ngFor=\"let t of typeDataSV.typeData$ | async\" [value]=\"t.id\">\r\n                                        {{t.name}}\r\n                                    </mat-option>\r\n                                </mat-select>\r\n                            </mat-form-field>\r\n                        </div>\r\n                        <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field >\r\n                                <mat-label>Số liệu</mat-label>\r\n                                <input matInput formControlName=\"data\">\r\n                            </mat-form-field>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <button mat-raised-button color=\"primary\" (click)=\"addMore()\">Thêm nhiều</button>\r\n    <div mat-dialog-actions>\r\n        <button mat-raised-button (click)=\"onNoClick()\">Hủy</button>\r\n        <button mat-raised-button (click)=\"submit()\">Xác nhận</button>\r\n    </div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("    <h1 mat-dialog-title>Số liệu sản xuất theo tháng</h1>\r\n    <div mat-dialog-content>\r\n        <div class=\"content\" fxLayout=\"row\" fxLayout.xs=\"column\" fxFlexFill>\r\n            <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                <mat-form-field>\r\n                    <mat-label>Năm</mat-label>\r\n                    <input matInput [(ngModel)]=\"year\" [ngModelOptions]=\"{standalone: true}\">\r\n                </mat-form-field>\r\n            </div>\r\n            <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n            <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                <mat-form-field>\r\n                    <mat-label>Tháng</mat-label>\r\n                    <mat-select  [(ngModel)]=\"month_value\" [ngModelOptions]=\"{standalone: true}\">\r\n                        <mat-option *ngFor=\"let m of month\" [value]=\"m\">\r\n                            {{m}}\r\n                        </mat-option>\r\n                    </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n            <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n            <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                <mat-form-field>\r\n                    <mat-label>Huyện/Thị xã</mat-label>\r\n                    <mat-select  [(ngModel)]=\"district_value\" [ngModelOptions]=\"{standalone: true}\">\r\n                        <mat-option *ngFor=\"let d of districtService.district$|async\" [value]=\"d.id\">\r\n                            {{d.name}}\r\n                        </mat-option>\r\n                    </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div mat-dialog-content>\r\n        <div [formGroup]=\"form\">\r\n            <div formArrayName=\"mProduction\" *ngFor=\"let control of mProductionControl.controls;index as i\">\r\n                <form class=\"example-form\" [formGroupName]=\"i\">\r\n                    <div class=\"content\" fxLayout=\"row\" fxLayout.xs=\"column\" fxFlexFill>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field>\r\n                                <mat-label> Tên sản phẩm</mat-label>\r\n                                <mat-select formControlName=\"p_id\">\r\n                                    <mat-option *ngFor=\"let p of productService.products$ | async\" [value]=\"p.id\">\r\n                                        {{p.name}}\r\n                                    </mat-option>\r\n                                </mat-select>\r\n                            </mat-form-field>\r\n                        </div>\r\n                        <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field >\r\n                                <mat-label>Kiểu dữ liệu</mat-label>\r\n                                <mat-select formControlName=\"t_d_id\">\r\n                                    <mat-option *ngFor=\"let t of typeDataSV.typeData$ | async\" [value]=\"t.id\">\r\n                                        {{t.name}}\r\n                                    </mat-option>\r\n                                </mat-select>\r\n                            </mat-form-field>\r\n                        </div>\r\n                        <div fxFlex=\"5\" fxFlex.xs=\"5\"></div>\r\n                        <div fxFlex=\"30\" fxFlex.xs=\"30\">\r\n                            <mat-form-field >\r\n                                <mat-label>Số liệu</mat-label>\r\n                                <input matInput formControlName=\"data\">\r\n                            </mat-form-field>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <button mat-raised-button color=\"primary\" (click)=\"addMore()\">Thêm nhiều</button>\r\n    <div mat-dialog-actions>\r\n        <button mat-raised-button (click)=\"onNoClick()\">Hủy</button>\r\n        <button mat-raised-button (click)=\"submit()\">Xác nhận</button>\r\n    </div>\r\n");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<button id=\"addNew\" mat-raised-button (click)=\"openDialog()\">Thêm mới</button>\r\n<div class=\"card\">\r\n    <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">Số liệu sản xuất theo tháng</h4>\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <table mat-table [dataSource]=\"showMonthlyProduction\" class=\"mat-elevation-z8\" matSort>\r\n            <!-- Position Column -->\r\n            <ng-container matColumnDef=\"position\">\r\n                <th mat-header-cell *matHeaderCellDef> No. </th>\r\n                <td mat-cell *matCellDef=\"let element; index as i\"> {{i + 1}} </td>\r\n            </ng-container>\r\n\r\n            <!-- Code Column -->\r\n            <ng-container matColumnDef=\"month\">\r\n                <th mat-header-cell *matHeaderCellDef> Tháng </th>\r\n                <td mat-cell *matCellDef=\"let element;index as index\">\r\n                    <ng-container *ngIf=\"index==editIndex;else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.month\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.month}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"years\">\r\n                <th mat-header-cell *matHeaderCellDef>Năm </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.year\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.year}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"product_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.p_id\">\r\n                                <mat-option *ngFor=\"let p of mPSV.products$ | async\" [value]=\"p.id\">\r\n                                    {{p.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element?.products?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"productLine_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Tên loại sản phẩm</th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.products.pL_id\">\r\n                                <mat-option *ngFor=\"let pL of mPSV.productLine$ | async\" [value]=\"pL.id\">\r\n                                    {{ pL.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element?.products?.productLine?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"type_data_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Kiểu dữ liệu </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.t_d_id\">\r\n                                <mat-option *ngFor=\"let t of mPSV.typeData$ | async\" [value]=\"t.id\">\r\n                                    {{t.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.typeData?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"data\">\r\n                <th mat-header-cell *matHeaderCellDef> Số liệu </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.data\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.data}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"delete\">\r\n                <th mat-header-cell *matHeaderCellDef> Thao tác </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else acceptButton\">\r\n                        <button mat-raised-button (click)=\"updateData()\">Xác nhận</button>\r\n                        <button mat-raised-button (click)=\"cancelEdit()\">Hủy</button>\r\n                    </ng-container>\r\n                    <ng-template #acceptButton>\r\n                        <ng-container *ngIf=\"editIndex == null\">\r\n                            <button mat-raised-button (click)=\"toggleEdit(index, element)\">Sửa</button>\r\n                            <button mat-raised-button (click)=\"deleteData(element.id)\">Xóa</button>\r\n                        </ng-container>\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n        </table>\r\n        <mat-paginator [length]=\"monthlyProduction.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\"\r\n        (page)=\"onChangePage($event)\">\r\n    </mat-paginator>\r\n    </div>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<button id=\"addNew\" mat-raised-button (click)=\"openDialog()\">Thêm mới</button>\r\n<div class=\"card\">\r\n    <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">Số liệu sản xuất theo tháng</h4>\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <table mat-table [dataSource]=\"showMonthlyProduction\" class=\"mat-elevation-z8\" matSort>\r\n            <!-- Position Column -->\r\n            <ng-container matColumnDef=\"position\">\r\n                <th mat-header-cell *matHeaderCellDef> No. </th>\r\n                <td mat-cell *matCellDef=\"let element; index as i\"> {{i + 1}} </td>\r\n            </ng-container>\r\n\r\n            <!-- Code Column -->\r\n            <ng-container matColumnDef=\"month\">\r\n                <th mat-header-cell *matHeaderCellDef> Tháng </th>\r\n                <td mat-cell *matCellDef=\"let element;index as index\">\r\n                    <ng-container *ngIf=\"index==editIndex;else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.month\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.month}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"years\">\r\n                <th mat-header-cell *matHeaderCellDef>Năm </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.year\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.year}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"district_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Huyện/Thị xã </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.d_id\">\r\n                                <mat-option *ngFor=\"let d of districtService.district$ | async\" [value]=\"d.id\">\r\n                                    {{d.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.district?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"product_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.p_id\">\r\n                                <mat-option *ngFor=\"let p of productService.products$ | async\" [value]=\"p.id\">\r\n                                    {{p.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element?.products?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"type_data_id\">\r\n                <th mat-header-cell *matHeaderCellDef> Kiểu dữ liệu </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <mat-form-field>\r\n                            <mat-select [(ngModel)]=\"element.t_d_id\">\r\n                                <mat-option *ngFor=\"let t of typeDataService.typeData$ | async\" [value]=\"t.id\">\r\n                                    {{t.name}}\r\n                                </mat-option>\r\n                            </mat-select>\r\n                        </mat-form-field>\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.typeData?.name}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"data\">\r\n                <th mat-header-cell *matHeaderCellDef> Số liệu </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else editInput\">\r\n                        <input type=\"text\" [(ngModel)]=\"currentMonthlyProduction.data\" />\r\n                    </ng-container>\r\n                    <ng-template #editInput>\r\n                        {{element.data}}\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <ng-container matColumnDef=\"delete\">\r\n                <th mat-header-cell *matHeaderCellDef> Thao tác </th>\r\n                <td mat-cell *matCellDef=\"let element; index as index\">\r\n                    <ng-container *ngIf=\"index == editIndex; else acceptButton\">\r\n                        <button mat-raised-button (click)=\"updateData()\">Xác nhận</button>\r\n                        <button mat-raised-button (click)=\"cancelEdit()\">Hủy</button>\r\n                    </ng-container>\r\n                    <ng-template #acceptButton>\r\n                        <ng-container *ngIf=\"editIndex == null\">\r\n                            <button mat-raised-button (click)=\"toggleEdit(index, element)\">Sửa</button>\r\n                            <button mat-raised-button (click)=\"deleteData(element.id)\">Xóa</button>\r\n                        </ng-container>\r\n                    </ng-template>\r\n                </td>\r\n            </ng-container>\r\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n        </table>\r\n        <mat-paginator [length]=\"monthlyProduction.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\"\r\n            (page)=\"onChangePage($event)\">\r\n        </mat-paginator>\r\n    </div>\r\n</div>");
 
 /***/ }),
 
@@ -55,6 +55,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_monthly_production_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/monthly-production.service */ "./src/app/modules/monthly-production/services/monthly-production.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../type-data/services/type-data.service */ "./src/app/modules/type-data/services/type-data.service.ts");
+/* harmony import */ var _products_services_product_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../products/services/product.service */ "./src/app/modules/products/services/product.service.ts");
+/* harmony import */ var _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../quan-huyen/services/quan-huyen.service */ "./src/app/modules/quan-huyen/services/quan-huyen.service.ts");
+
+
 
 
 
@@ -62,15 +66,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DialogMPComponent = class DialogMPComponent {
-    constructor(dialogRef, data, mPSV, formBuilder, typeDataSV) {
+    constructor(dialogRef, data, mPSV, formBuilder, typeDataSV, productService, districtService) {
         this.dialogRef = dialogRef;
         this.data = data;
         this.mPSV = mPSV;
         this.formBuilder = formBuilder;
         this.typeDataSV = typeDataSV;
+        this.productService = productService;
+        this.districtService = districtService;
         this.month = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
         this.year = null;
         this.month_value = null;
+        this.district_value = null;
     }
     ngOnInit() {
         this.form = this.formBuilder.group({
@@ -83,11 +90,12 @@ let DialogMPComponent = class DialogMPComponent {
     }
     addMore() {
         this.mProductionControl.push(this.formBuilder.group({
-            month: [''],
-            year: [''],
-            data: [''],
-            p_id: [''],
-            t_d_id: ['']
+            month: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            year: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            data: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            p_id: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            t_d_id: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            d_id: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]]
         }));
     }
     onNoClick() {
@@ -96,7 +104,7 @@ let DialogMPComponent = class DialogMPComponent {
     submit() {
         const { mProduction } = this.form.value;
         const newMProduction = mProduction.map(e => {
-            return Object.assign({}, e, { month: this.month_value, year: this.year });
+            return Object.assign({}, e, { month: this.month_value, year: this.year, d_id: this.district_value });
         });
         this.mPSV.add(newMProduction);
         this.dialogRef.close();
@@ -107,7 +115,9 @@ DialogMPComponent.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
     { type: _services_monthly_production_service__WEBPACK_IMPORTED_MODULE_3__["MonthlyProductionService"] },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
-    { type: _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_5__["TypeDataService"] }
+    { type: _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_5__["TypeDataService"] },
+    { type: _products_services_product_service__WEBPACK_IMPORTED_MODULE_6__["ProductService"] },
+    { type: _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_7__["QuanHuyenService"] }
 ];
 DialogMPComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -151,6 +161,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog-mp/dialog-mp.component */ "./src/app/modules/monthly-production/dialog-mp/dialog-mp.component.ts");
 /* harmony import */ var _services_monthly_production_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./services/monthly-production.service */ "./src/app/modules/monthly-production/services/monthly-production.service.ts");
 /* harmony import */ var _lib_services_confirm_dialog_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../@lib/services/confirm-dialog.service */ "./src/app/@lib/services/confirm-dialog.service.ts");
+/* harmony import */ var _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../type-data/services/type-data.service */ "./src/app/modules/type-data/services/type-data.service.ts");
+/* harmony import */ var _products_services_product_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../products/services/product.service */ "./src/app/modules/products/services/product.service.ts");
+/* harmony import */ var _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../quan-huyen/services/quan-huyen.service */ "./src/app/modules/quan-huyen/services/quan-huyen.service.ts");
+
+
+
 
 
 
@@ -158,11 +174,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MonthlyProductionComponent = class MonthlyProductionComponent {
-    constructor(dialog, mPSV, confirmDialog) {
+    constructor(dialog, mPSV, confirmDialog, typeDataService, productService, districtService) {
         this.dialog = dialog;
         this.mPSV = mPSV;
         this.confirmDialog = confirmDialog;
-        this.displayedColumns = ["position", "month", "years", "product_id", "productLine_id", "type_data_id", "data", "delete"];
+        this.typeDataService = typeDataService;
+        this.productService = productService;
+        this.districtService = districtService;
+        this.displayedColumns = ["position", "month", "years", "district_id", "product_id", "type_data_id", "data", "delete"];
         this.monthlyProduction = null;
         this.showMonthlyProduction = null;
         this.currentMonthlyProduction = null;
@@ -198,8 +217,10 @@ let MonthlyProductionComponent = class MonthlyProductionComponent {
     cancelEdit() {
         this.currentMonthlyProduction.month = this.oldMonthlyProduction.month;
         this.currentMonthlyProduction.year = this.oldMonthlyProduction.year;
-        // this.currentMonthlyProduction.productCode = this.oldMonthlyProduction.productCode;
-        // this.currentMonthlyProduction.typeDataCode = this.oldMonthlyProduction.typeDataCode;
+        this.currentMonthlyProduction.t_d_id = this.oldMonthlyProduction.t_d_id;
+        this.currentMonthlyProduction.d_id = this.oldMonthlyProduction.d_id;
+        this.currentMonthlyProduction.data = this.oldMonthlyProduction.data;
+        this.currentMonthlyProduction.p_id = this.oldMonthlyProduction.p_id;
         this.editIndex = this.currentMonthlyProduction = null;
     }
     updateData() {
@@ -221,7 +242,10 @@ let MonthlyProductionComponent = class MonthlyProductionComponent {
 MonthlyProductionComponent.ctorParameters = () => [
     { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
     { type: _services_monthly_production_service__WEBPACK_IMPORTED_MODULE_4__["MonthlyProductionService"] },
-    { type: _lib_services_confirm_dialog_service__WEBPACK_IMPORTED_MODULE_5__["ConfirmDialogService"] }
+    { type: _lib_services_confirm_dialog_service__WEBPACK_IMPORTED_MODULE_5__["ConfirmDialogService"] },
+    { type: _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_6__["TypeDataService"] },
+    { type: _products_services_product_service__WEBPACK_IMPORTED_MODULE_7__["ProductService"] },
+    { type: _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_8__["QuanHuyenService"] }
 ];
 MonthlyProductionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -254,9 +278,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/flex-layout */ "../../node_modules/@angular/flex-layout/esm2015/flex-layout.js");
 /* harmony import */ var _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../@lib/lib.module */ "./src/app/@lib/lib.module.ts");
-/* harmony import */ var _services_monthly_production_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/monthly-production.service */ "./src/app/modules/monthly-production/services/monthly-production.service.ts");
-/* harmony import */ var _dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialog-mp/dialog-mp.component */ "./src/app/modules/monthly-production/dialog-mp/dialog-mp.component.ts");
-
+/* harmony import */ var _dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialog-mp/dialog-mp.component */ "./src/app/modules/monthly-production/dialog-mp/dialog-mp.component.ts");
 
 
 
@@ -278,7 +300,7 @@ let MonthlyProductionModule = class MonthlyProductionModule {
 };
 MonthlyProductionModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_monthly_production_component__WEBPACK_IMPORTED_MODULE_3__["MonthlyProductionComponent"], _dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_10__["DialogMPComponent"]],
+        declarations: [_monthly_production_component__WEBPACK_IMPORTED_MODULE_3__["MonthlyProductionComponent"], _dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_9__["DialogMPComponent"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(ROUTES),
@@ -296,8 +318,7 @@ MonthlyProductionModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _lib_lib_module__WEBPACK_IMPORTED_MODULE_8__["LibModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatPaginatorModule"]
         ],
-        providers: [_services_monthly_production_service__WEBPACK_IMPORTED_MODULE_9__["MonthlyProductionService"]],
-        entryComponents: [_dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_10__["DialogMPComponent"]]
+        entryComponents: [_dialog_mp_dialog_mp_component__WEBPACK_IMPORTED_MODULE_9__["DialogMPComponent"]]
     })
 ], MonthlyProductionModule);
 
@@ -322,7 +343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "../../node_modules/rxjs/_esm2015/operators/index.js");
 /* harmony import */ var _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../type-data/services/type-data.service */ "./src/app/modules/type-data/services/type-data.service.ts");
 /* harmony import */ var _products_services_product_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../products/services/product.service */ "./src/app/modules/products/services/product.service.ts");
-/* harmony import */ var _product_line_services_product_line_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../product-line/services/product-line.service */ "./src/app/modules/product-line/services/product-line.service.ts");
+/* harmony import */ var _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../quan-huyen/services/quan-huyen.service */ "./src/app/modules/quan-huyen/services/quan-huyen.service.ts");
 
 
 
@@ -332,46 +353,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MonthlyProductionService = class MonthlyProductionService {
-    constructor(http, t_dSV, productSV, productLineSV) {
+    constructor(http, t_dSV, productSV, districtService) {
         this.http = http;
         this.t_dSV = t_dSV;
         this.productSV = productSV;
-        this.productLineSV = productLineSV;
+        this.districtService = districtService;
         this.monthlyProductionsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
-        this.productsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
-        this.productLineSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
-        this.typeDataSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         this.getList();
     }
     get monthlyProduction$() {
         return this.monthlyProductionsSubject.asObservable();
     }
-    get products$() {
-        return this.productSV.product$;
-    }
-    get productLine$() {
-        return this.productLineSV.productLine$;
-    }
-    get typeData$() {
-        return this.t_dSV.typeData$;
-    }
     getList() {
-        const request = [
-            this.http.get("monthly-production"),
-            this.http.get("products"),
-            this.http.get("product-line")
-        ];
-        Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(request).subscribe((res) => {
-            const monthlyProduction = res[0];
-            const products = res[1];
-            const productLine = res[2];
-            this.monthlyProductionsSubject.next(monthlyProduction);
-            this.productsSubject.next(products);
-            this.productLineSubject.next(productLine);
-        });
+        this.http.get("monthly-production").subscribe((res) => this.monthlyProductionsSubject.next(res));
     }
     add(mProduction) {
-        console.log(mProduction);
         this.http.post("monthly-production", mProduction).subscribe((res) => {
             res.map(e => {
                 const newList = [e, ...this.monthlyProductionsSubject.value];
@@ -385,10 +381,18 @@ let MonthlyProductionService = class MonthlyProductionService {
             const index = value.findIndex(e => e.id == monthlyProduction.id);
             const newList = Object.assign({}, value);
             newList[index] = monthlyProduction;
-            const product = this.productsSubject.value.find(e => e.id == monthlyProduction.p_id);
-            monthlyProduction.products = product;
-            const typeData1 = this.typeDataSubject.value.find(e => e.id == monthlyProduction.t_d_id);
-            monthlyProduction.typeData = typeData1;
+            this.t_dSV.typeData$.subscribe(typeDataList => {
+                const tL = typeDataList.find(e => e.id == monthlyProduction.t_d_id);
+                monthlyProduction.typeData = tL;
+            });
+            this.productSV.products$.subscribe(productList => {
+                const pL = productList.find(e => e.id == monthlyProduction.p_id);
+                monthlyProduction.products = pL;
+            });
+            this.districtService.district$.subscribe(productList => {
+                const dL = productList.find(e => e.id == monthlyProduction.d_id);
+                monthlyProduction.district = dL;
+            });
             this.monthlyProductionsSubject.next(newList);
         }));
     }
@@ -404,10 +408,12 @@ MonthlyProductionService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
     { type: _type_data_services_type_data_service__WEBPACK_IMPORTED_MODULE_5__["TypeDataService"] },
     { type: _products_services_product_service__WEBPACK_IMPORTED_MODULE_6__["ProductService"] },
-    { type: _product_line_services_product_line_service__WEBPACK_IMPORTED_MODULE_7__["ProductLineService"] }
+    { type: _quan_huyen_services_quan_huyen_service__WEBPACK_IMPORTED_MODULE_7__["QuanHuyenService"] }
 ];
 MonthlyProductionService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root"
+    })
 ], MonthlyProductionService);
 
 

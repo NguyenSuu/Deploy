@@ -6,6 +6,7 @@ import cg.economic.model.JwtResponse;
 import cg.economic.model.UserDTO;
 import cg.economic.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -31,15 +32,10 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
-//    @RequestMapping(value = "/register", method = RequestMethod.POST)
-//    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
-//
-//        return ResponseEntity.ok(userDetailsService.save(user));
-//    }
     @PostMapping("/register")
-    public UserDTO saveUser(@RequestBody UserDTO user) {
+    public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO user) {
         userDetailsService.save(user);
-        return user;
+        return new ResponseEntity<UserDTO>(HttpStatus.CREATED);
     }
     private void authenticate(String username, String password) throws Exception {
         try {

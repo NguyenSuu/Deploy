@@ -32,20 +32,20 @@ public class ProductLineRestFulController {
     }
 
     @PostMapping("/product-line")
-    public ProductLine[] addProductLine(@RequestBody ProductLine[] productLines) {
+    public ResponseEntity<ProductLine> addProductLine(@RequestBody ProductLine[] productLines) {
         for (var productLine : productLines) {
             Field field = fieldService.findById(productLine.getF_id());
             productLine.setField(field);
             productLineService.save(productLine);
         }
-        return productLines;
+        return new ResponseEntity<ProductLine>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/product-line")
-    public ProductLine patchProductLine(@RequestBody ProductLine productLine) {
+    public ResponseEntity<ProductLine> patchProductLine(@RequestBody ProductLine productLine) {
             productLine.setField(fieldService.findById(productLine.getF_id()));
             productLineService.save(productLine);
-        return productLine;
+        return new ResponseEntity<ProductLine>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/product-line/{id}")
