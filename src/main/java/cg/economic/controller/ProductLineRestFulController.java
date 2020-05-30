@@ -32,13 +32,13 @@ public class ProductLineRestFulController {
     }
 
     @PostMapping("/product-line")
-    public ResponseEntity<ProductLine> addProductLine(@RequestBody ProductLine[] productLines) {
+    public ResponseEntity<ProductLine[]> addProductLine(@RequestBody ProductLine[] productLines) {
         for (var productLine : productLines) {
             Field field = fieldService.findById(productLine.getF_id());
             productLine.setField(field);
             productLineService.save(productLine);
         }
-        return new ResponseEntity<ProductLine>(HttpStatus.CREATED);
+        return new ResponseEntity<ProductLine[]>(productLines,HttpStatus.CREATED);
     }
 
     @PatchMapping("/product-line")

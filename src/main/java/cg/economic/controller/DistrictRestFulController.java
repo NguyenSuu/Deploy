@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -27,11 +28,11 @@ public class DistrictRestFulController {
     }
 
     @PostMapping("/districts")
-    public ResponseEntity<District> addDistrict(@RequestBody District[] districts){
+    public ResponseEntity<District[]> addDistrict(@RequestBody District[] districts){
         for (var district :districts){
             districtService.save(district);
         }
-        return new ResponseEntity<District>(HttpStatus.CREATED);
+        return new ResponseEntity<District[]>(districts,HttpStatus.CREATED);
     }
 
     @PatchMapping("/districts")

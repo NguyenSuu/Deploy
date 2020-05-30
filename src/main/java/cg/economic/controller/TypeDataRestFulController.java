@@ -27,11 +27,11 @@ public class TypeDataRestFulController {
     }
 
     @PostMapping("/type-data")
-    public ResponseEntity<TypeData> addTypeData(@RequestBody TypeData[] typeData){
+    public ResponseEntity<TypeData[]> addTypeData(@RequestBody TypeData[] typeData){
         for(var type :typeData) {
             typeDataService.save(type);
         }
-        return new ResponseEntity<TypeData>(HttpStatus.CREATED);
+        return new ResponseEntity<TypeData[]>(typeData,HttpStatus.CREATED);
     }
 
     @PatchMapping("/type-data")

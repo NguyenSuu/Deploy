@@ -34,13 +34,13 @@ public class ProductRestFulController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Product> addProduct(@RequestBody Product[] products) {
+    public ResponseEntity<Product[]> addProduct(@RequestBody Product[] products) {
         for (var product : products) {
             product.setProductLine(productLineService.findById(product.getpL_id()));
             product.setUnits(unitsService.findById(product.getU_id()));
             productService.save(product);
         }
-        return new ResponseEntity<Product>(HttpStatus.CREATED);
+        return new ResponseEntity<Product[]>(products,HttpStatus.CREATED);
     }
 
     @PatchMapping("/products")

@@ -37,14 +37,14 @@ public class MonthlyProductionRestFulController {
     }
 
     @PostMapping("/monthly-production")
-    public ResponseEntity<MonthlyProduction> addMonthlyProduction(@RequestBody MonthlyProduction[] monthlyProduction){
+    public ResponseEntity<MonthlyProduction[]> addMonthlyProduction(@RequestBody MonthlyProduction[] monthlyProduction){
         for(var mProduction:monthlyProduction){
             mProduction.setProducts(productService.findById(mProduction.getP_id()));
             mProduction.setTypeData(typeDataService.findById(mProduction.getT_d_id()));
             mProduction.setDistrict(districtService.findById(mProduction.getD_id()));
             monthlyProductionService.save(mProduction);
         }
-        return new ResponseEntity<MonthlyProduction>(HttpStatus.CREATED);
+        return new ResponseEntity<MonthlyProduction[]>(monthlyProduction,HttpStatus.CREATED);
     }
 
     @PatchMapping("/monthly-production")
