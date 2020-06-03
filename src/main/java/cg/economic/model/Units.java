@@ -29,6 +29,15 @@ public class Units {
     public Units(){
 
     }
+    private short deleted;
+
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
     public String getSign() {
         return sign;
     }

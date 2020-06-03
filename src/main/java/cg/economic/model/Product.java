@@ -57,7 +57,15 @@ public class Product {
     public Product(){
 
     }
+    private short deleted;
 
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
     public Long getU_id() {
         return u_id;
     }

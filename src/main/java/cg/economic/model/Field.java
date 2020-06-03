@@ -29,6 +29,15 @@ public class Field {
     public Field(){
 
     }
+    private short deleted;
+
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
     public Long getId() {
         return id;
     }

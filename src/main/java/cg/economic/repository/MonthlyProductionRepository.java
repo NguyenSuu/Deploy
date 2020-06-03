@@ -1,6 +1,7 @@
 package cg.economic.repository;
 
 import cg.economic.model.MonthlyProduction;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,5 +14,8 @@ public interface  MonthlyProductionRepository extends CrudRepository<MonthlyProd
             "WHERE m.month=:month AND m.year=:year")
     MonthlyProduction resultEveryMonth(@Param("month")int month, @Param("year")int year);
 
-
+    @Override
+    @Modifying
+    @Query("update MonthlyProduction m set m.deleted=1 where m.id=:id")
+    void deleteById(@Param("id") Long id);
 }

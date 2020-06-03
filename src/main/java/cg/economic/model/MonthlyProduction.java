@@ -19,9 +19,10 @@ public class MonthlyProduction {
     private Long t_d_id;
     private Long d_id;
 
-    public MonthlyProduction(){
+    public MonthlyProduction() {
 
     }
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product products;
@@ -47,7 +48,7 @@ public class MonthlyProduction {
     }
 
     @ManyToOne
-    @JoinColumn(name="typeData_id")
+    @JoinColumn(name = "typeData_id")
     private TypeData typeData;
 
     public TypeData getTypeData() {
@@ -58,7 +59,7 @@ public class MonthlyProduction {
         this.typeData = typeData;
     }
 
-//    @JsonIgnore
+    //    @JsonIgnore
 //    @ManyToOne
 //    private QuarterProduction quarterProduction;
 //
@@ -69,7 +70,15 @@ public class MonthlyProduction {
 //    public void setQuarterProduction(QuarterProduction quarterProduction) {
 //        this.quarterProduction = quarterProduction;
 //    }
+    private short deleted;
 
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
 
     public Long getP_id() {
         return p_id;

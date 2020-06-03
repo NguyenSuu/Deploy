@@ -18,7 +18,15 @@ public class ProductLine {
     @ManyToOne
     @JoinColumn(name = "field_id")
     private Field field;
+    private short deleted;
 
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
     @JsonIgnore
     @OneToMany(mappedBy = "productLine")
     private Set<Product> products;

@@ -28,7 +28,15 @@ public class TypeData {
     public void setMonthlyProductions(Set<MonthlyProduction> monthlyProductions) {
         this.monthlyProductions = monthlyProductions;
     }
+    private short deleted;
 
+    public short getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
     public Long getId() {
         return id;
     }
